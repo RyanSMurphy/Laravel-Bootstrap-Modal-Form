@@ -18,3 +18,20 @@ bower install jerseymilker/laravel-bootstrap-modal-form --save
 - Include this script.
 - Add `class="bootstrap-modal-form"` to form.
 - Add `class="bootstrap-modal-form-open"` to modal open button.
+
+# Shameless Plug
+
+I highly recommend [BootForms](http://github.com/adamwathan/bootforms) form builder package by [Adam Wathan](https://twitter.com/adamwathan).  This is a great helper which makes generating Bootstrap form markup super easy.  It even auto-detects Laravel's validation errors and outputs necessary Bootstrap markup with error messages.  Example usage...
+
+This...
+```php
+{!! BootForm::text('First Name', 'first_name') !!}
+```
+Generates this...
+```php
+<div class="form-group {!! $errors->has('first_name') ? 'has-error' : '' !!}">
+  <label for="first_name">First Name</label>
+  <input type="text" class="form-control" id="first_name">
+  {!! $errors->first('first_name', '<p class="help-block">:message</p>') !!}
+</div>
+```
