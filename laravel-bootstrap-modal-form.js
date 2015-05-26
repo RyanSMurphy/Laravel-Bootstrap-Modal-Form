@@ -52,6 +52,7 @@ $('document').ready(function() {
 				
 				// Iterate through errors object.
 				$.each(errors, function(field, message) {
+					console.error(field+': '+message);
 					var formGroup = $('[name='+field+']', form).closest('.form-group');
 					formGroup.addClass('has-error').append('<p class="help-block">'+message+'</div>');
 				});
