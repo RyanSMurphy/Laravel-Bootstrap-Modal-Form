@@ -1,6 +1,10 @@
 /*!
  * Laravel-Bootstrap-Modal-Form (https://github.com/JerseyMilker/Laravel-Bootstrap-Modal-Form)
  * Copyright 2015 Jesse Leite - MIT License
+ *
+ * Bromance:
+ * Adam Wathan has nice boots. Thank you for BootForms magic.
+ * Matt Higgins has nice beard. Thank you for JS wizardry.
  */
 
 $('document').ready(function() {
