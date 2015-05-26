@@ -1,3 +1,8 @@
+/*!
+ * Laravel-Bootstrap-Modal-Form (https://github.com/JerseyMilker/Laravel-Bootstrap-Modal-Form)
+ * Copyright 2015 Jesse Leite - MIT License
+ */
+
 $('document').ready(function() {
 
 	// Prepare reset.
