@@ -4,6 +4,12 @@ A form validation extension for your Laravel app.  Use when embedding a [Bootstr
 
 ![Demo](http://zippy.gfycat.com/DefensiveFlickeringKilldeer.gif)
 
+# Requirements
+
+- [Bootstrap CSS](http://getbootstrap.com/css/)
+- [Bootstrap JS](http://getbootstrap.com/javascript/)
+- [jQuery](http://jquery.com) (Bootstrap JS also depends on it.)
+
 # Quick Installation
 
 Via [Bower](http://bower.io):
