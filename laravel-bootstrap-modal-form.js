@@ -17,7 +17,7 @@ $('document').ready(function() {
 
 	// Intercept submit.
 	$('form.bootstrap-modal-form').on('submit', function() {
-		
+
 		// Set vars.
 		var form = $(this),
 		    url = form.attr('action'),
@@ -49,12 +49,12 @@ $('document').ready(function() {
 			// Check for errors.
 			if (response.status == 422) {
 				var errors = $.parseJSON(response.responseText);
-				
+
 				// Iterate through errors object.
 				$.each(errors, function(field, message) {
 					console.error(field+': '+message);
 					var formGroup = $('[name='+field+']', form).closest('.form-group');
-					formGroup.addClass('has-error').append('<p class="help-block">'+message+'</div>');
+					formGroup.addClass('has-error').append('<p class="help-block">'+message+'</p>');
 				});
 
 				// Reset submit.
@@ -73,9 +73,9 @@ $('document').ready(function() {
 
 		// Return false to prevent the page from being reloaded.
 		return false;
-		
+
 	});
-	
+
 	// Reset errors when opening modal.
 	$('.bootstrap-modal-form-open').click(function() {
 		resetModalFormErrors();
