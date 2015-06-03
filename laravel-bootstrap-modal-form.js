@@ -28,9 +28,9 @@ $('document').ready(function() {
 		if (form.find('[type=file]').length) {
 
 			// If found, prepare submission via FormData object.
-		    var input       = form.serializeArray(),
-		        data        = new FormData(),
-		        contentType = false;
+			var input       = form.serializeArray(),
+			    data        = new FormData(),
+			    contentType = false;
 
 			// Append input to FormData object.
 			$.each(input, function(index, input) {
@@ -100,12 +100,7 @@ $('document').ready(function() {
 			} else {
 				location.reload();
 			}
-
 		});
-
-		// Return false to prevent the page from being reloaded.
-		return false;
-
 	});
 
 	// Reset errors when opening modal.
