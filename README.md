@@ -8,7 +8,7 @@ A form validation extension for your Laravel app.  Use when embedding a [Bootstr
 
 - [Bootstrap CSS](http://getbootstrap.com/css/)
 - [Bootstrap JS](http://getbootstrap.com/javascript/)
-- [jQuery](http://jquery.com) (Bootstrap JS also depends on it.)
+- [jQuery](http://jquery.com)
 
 # Quick Installation
 
@@ -24,6 +24,11 @@ bower install jerseymilker/laravel-bootstrap-modal-form --save
 - Include this script.
 - Add `class="bootstrap-modal-form"` to form.
 - Add `class="bootstrap-modal-form-open"` to modal open button.
+
+# Additional Notes
+
+- This script does not handle CSRF tokens. Use Laravel's [_token field](http://laravel.com/docs/5.0/routing#csrf-protection) in your forms if needed.
+- This script submits via `POST` form action. Use Laravel's [method spoofing](http://laravel.com/docs/5.0/routing#method-spoofing) if you need to submit via `PUT`, `PATCH`, or `DELETE`.
 
 # Shameless Plug
 
