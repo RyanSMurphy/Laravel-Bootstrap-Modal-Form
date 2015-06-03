@@ -33,11 +33,13 @@ bower install jerseymilker/laravel-bootstrap-modal-form --save
 
 # Shameless Plug
 
-I highly recommend [BootForms](http://github.com/adamwathan/bootforms) form builder package by [Adam Wathan](https://twitter.com/adamwathan).  This is a great helper which makes generating Bootstrap form markup super easy.  It even auto-detects Laravel's validation state and outputs error messages for most field types.  Example usage:
+I highly recommend [BootForms](http://github.com/adamwathan/bootforms) form builder package by [Adam Wathan](https://twitter.com/adamwathan).  This is a great helper which makes generating Bootstrap form markup super easy.  It even auto-detects Laravel's validation state and outputs error messages for most field types.
+
+Example:
 ```php
 {!! BootForm::text('First Name', 'first_name') !!}
 ```
-Generates this...
+Generates:
 ```php
 <div class="form-group {!! $errors->has('first_name') ? 'has-error' : '' !!}">
   <label for="first_name">First Name</label>
