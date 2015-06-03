@@ -20,25 +20,38 @@ $('document').ready(function() {
 		submission.preventDefault();
 
 		// Set vars.
-		var form = $(this),
-		    url = form.attr('action'),
-		    input = form.serializeArray(),
-		    formData = new FormData(),
+		var form   = $(this),
+		    url    = form.attr('action'),
 		    submit = form.find('[type=submit]');
 
-		// Append input to FormData object.
-		$.each(input, function(index, input) {
-			formData.append(input.name, input.value);
-		});
+		// Check for file inputs.
+		if (form.find('[type=file]').length) {
 
-		// Append files to FormData object.
-		$.each(form.find('[type=file]'), function(index, input) {
-			if (input.files.length == 1) {
-				formData.append(input.name, input.files[0]);
-			} else if (input.files.length > 1) {
-				formData.append(input.name, input.files);
-			}
-		});
+			// If found, prepare submission via FormData object.
+		    var input       = form.serializeArray(),
+		        data        = new FormData(),
+		        contentType = false;
+
+			// Append input to FormData object.
+			$.each(input, function(index, input) {
+				data.append(input.name, input.value);
+			});
+
+			// Append files to FormData object.
+			$.each(form.find('[type=file]'), function(index, input) {
+				if (input.files.length == 1) {
+					data.append(input.name, input.files[0]);
+				} else if (input.files.length > 1) {
+					data.append(input.name, input.files);
+				}
+			});
+		}
+
+		// If no file input found, do not use FormData object (better browser compatibility).
+		else {
+			var data    = form.serialize(),
+			    contentType = 'application/x-www-form-urlencoded; charset=UTF-8';
+		}
 
 		// Please wait.
 		if (submit.is('button')) {
@@ -53,10 +66,10 @@ $('document').ready(function() {
 		$.ajax({
 			type: "POST",
 			url: url,
-			data: formData,
+			data: data,
 			dataType: 'json',
 			cache: false,
-			contentType: false,
+			contentType: contentType,
 			processData: false
 
 		// Response.

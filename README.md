@@ -29,6 +29,7 @@ bower install jerseymilker/laravel-bootstrap-modal-form --save
 
 - This script does not handle CSRF tokens. Use Laravel's [_token field](http://laravel.com/docs/5.0/routing#csrf-protection) in your forms if needed.
 - This script submits via `POST` form action. Use Laravel's [method spoofing](http://laravel.com/docs/5.0/routing#method-spoofing) if you need to submit via `PUT`, `PATCH`, or `DELETE`.
+- If the script detects file input, FormData object will be used (requires IE10+, more info on [browser compatibility here](https://developer.mozilla.org/en/docs/Web/API/FormData#Browser_compatibility)).
 
 # Shameless Plug
 
