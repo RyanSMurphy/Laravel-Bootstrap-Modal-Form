@@ -16,13 +16,29 @@ $('document').ready(function() {
 	}
 
 	// Intercept submit.
-	$('form.bootstrap-modal-form').on('submit', function() {
+	$('form.bootstrap-modal-form').on('submit', function(submission) {
+		submission.preventDefault();
 
 		// Set vars.
 		var form = $(this),
 		    url = form.attr('action'),
-		    data = form.serialize();
+		    input = form.serializeArray(),
+		    formData = new FormData(),
 		    submit = form.find('[type=submit]');
+
+		// Append input to FormData object.
+		$.each(input, function(index, input) {
+			formData.append(input.name, input.value);
+		});
+
+		// Append files to FormData object.
+		$.each(form.find('[type=file]'), function(index, input) {
+			if (input.files.length == 1) {
+				formData.append(input.name, input.files[0]);
+			} else if (input.files.length > 1) {
+				formData.append(input.name, input.files);
+			}
+		});
 
 		// Please wait.
 		if (submit.is('button')) {
@@ -37,8 +53,11 @@ $('document').ready(function() {
 		$.ajax({
 			type: "POST",
 			url: url,
-			data: data,
-			dataType: 'json'
+			data: formData,
+			dataType: 'json',
+			cache: false,
+			contentType: false,
+			processData: false
 
 		// Response.
 		}).always(function(response, status) {
