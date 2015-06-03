@@ -49,7 +49,7 @@ $('document').ready(function() {
 
 		// If no file input found, do not use FormData object (better browser compatibility).
 		else {
-			var data    = form.serialize(),
+			var data        = form.serialize(),
 			    contentType = 'application/x-www-form-urlencoded; charset=UTF-8';
 		}
 
