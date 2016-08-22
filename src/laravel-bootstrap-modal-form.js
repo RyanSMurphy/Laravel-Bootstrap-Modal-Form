@@ -85,6 +85,15 @@ $('document').ready(function() {
                 // Iterate through errors object.
                 $.each(errors, function(field, message) {
                     console.error(field+': '+message);
+                    //handle arrays
+                    if(field.indexOf('.') != -1) {
+                        field = field.replace('.', '[');
+                        //handle multi dimensional array
+                        for (i = 1; i <= (field.match(/./g) || []).length; i++) {
+                            field = field.replace('.', '][');
+                        }
+                        field = field + "]";
+                    }
                     var formGroup = $('[name='+field+']', form).closest('.form-group');
                     formGroup.addClass('has-error').append('<p class="help-block">'+message+'</p>');
                 });
