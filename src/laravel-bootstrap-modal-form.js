@@ -94,8 +94,10 @@ $('document').ready(function() {
                         }
                         field = field + "]";
                     }
-                    var formGroup = $('[name='+field+']', form).closest('.form-group');
-                    formGroup.addClass('has-error').append('<p class="help-block">'+message+'</p>');
+                    var formControl = $('[name='+field+']', form);
+                    formControl.after('<p class="help-block">'+message+'</p>');
+                    var formGroup = formControl.closest('.form-group');
+                    formGroup.addClass('has-error');
                 });
 
                 // Reset submit.
