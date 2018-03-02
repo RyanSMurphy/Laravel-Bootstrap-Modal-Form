@@ -80,7 +80,8 @@ $('document').ready(function() {
 
             // Check for errors.
             if (response.status == 422) {
-                var errors = $.parseJSON(response.responseText);
+                var response_body = $.parseJSON(response.responseText);
+                var errors = response_body.errors;
 
                 // Iterate through errors object.
                 $.each(errors, function(field, message) {
@@ -94,8 +95,14 @@ $('document').ready(function() {
                         }
                         field = field + "]";
                     }
-                    var formGroup = $('[name='+field+']', form).closest('.form-group');
-                    formGroup.addClass('has-error').append('<p class="help-block">'+message+'</p>');
+                    var formControl = $('[name='+field+']', form);
+                    if(formControl.parent().hasClass('input-group')) {
+                        formControl.closest('.input-group').after('<span class="help-block">' + message + '</span>');
+                    } else {
+                        formControl.after('<span class="help-block">' + message + '</span>');
+                    }
+                    var formGroup = formControl.closest('.form-group');
+                    formGroup.addClass('has-error');
                 });
 
                 // Reset submit.
